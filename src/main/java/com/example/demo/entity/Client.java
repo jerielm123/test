@@ -12,6 +12,7 @@ public  final class Client {
 	@Id
 	@GeneratedValue(generator = "client_seq")
 	private Long id;
+	
 
 	public Long getId() {
 		return id;
