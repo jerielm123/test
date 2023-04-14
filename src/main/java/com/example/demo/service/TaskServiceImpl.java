@@ -17,22 +17,23 @@ import com.example.demo.repository.TaskGroupRepository;
 import com.example.demo.repository.TaskRepository;
 import com.example.demo.repository.UserRepository;
 
-import client.example.demo.mapper.TaskMapper;
+import client.example.demo.mapper.DtoMapper;
 
 @Service
-public class TaskServiceImpl implements TaskService {
+public class TaskServiceImpl implements TaskService 
+{
 	private final TaskRepository taskRepository;
-	private final TaskMapper taskMapper;
+	private final DtoMapper dtoMapper;
 	private final UserRepository userRepository;
 	private final TaskGroupRepository taskGroupRepository;
 	
 	public TaskServiceImpl(TaskRepository taskRepository, UserRepository userRepository, 
-			TaskGroupRepository taskGroupRepository, TaskMapper taskMapper)
+			TaskGroupRepository taskGroupRepository, DtoMapper taskMapper)
 	{
 		this.taskRepository = taskRepository;
 		this.userRepository = userRepository;
 		this.taskGroupRepository = taskGroupRepository;
-		this.taskMapper = taskMapper;
+		this.dtoMapper = taskMapper;
 	}
 	
 	public List<Task> getTasks(Long userId)
@@ -43,7 +44,7 @@ public class TaskServiceImpl implements TaskService {
 	@Override
 	public Task createTask(CreateTaskDto createTaskDto, Long userId)
 	{
-		Task task = taskMapper.toCreateTask(createTaskDto);
+		Task task = dtoMapper.toCreateTask(createTaskDto);
 		
 		Optional<TaskGroup> taskGroupOptional = taskGroupRepository.findFirstByUserIdAndIsEndedOrderByCreatedAtDesc(userId);
 		TaskGroup taskGroup = new TaskGroup();
@@ -74,7 +75,7 @@ public class TaskServiceImpl implements TaskService {
 	@Override
 	public Task updateTask(UpdateTaskDto updateTaskDto, Long taskId, Long userId)
 	{
-		Task task = taskMapper.toUpdateTask(updateTaskDto);
+		Task task = dtoMapper.toUpdateTask(updateTaskDto);
 		Task currentTask = taskRepository.findById(taskId).orElseThrow(RuntimeException::new);
 		
 		currentTask.setDescription(task.getDescription());
