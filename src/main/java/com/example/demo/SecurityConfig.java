@@ -17,15 +17,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().oauth2ResourceServer().jwt().and().and()
 				.cors().and().csrf().disable();
 	}
-	
+
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/v2/api-docs",
-                "/configuration/ui",
-                "/swagger-resources/**",
-                "/configuration/security",
-                "/swagger-ui.html",
-                "/webjars/**");
+		web.ignoring().antMatchers("/v2/api-docs", "/configuration/*", "/swagger-resources/**",
+				"/configuration/security", "/swagger-ui.html", "/webjars/**", "/v2/api-docs", "/v3/api-docs",
+				"/swagger-resources/**", "/swagger-ui/**");
 	}
 
 }
