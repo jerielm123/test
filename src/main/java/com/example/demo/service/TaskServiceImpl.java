@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.CreateTaskDto;
 import com.example.demo.dto.UpdateTaskDto;
-import com.example.demo.entity.Client;
 import com.example.demo.entity.Task;
 import com.example.demo.entity.TaskGroup;
 import com.example.demo.repository.TaskGroupRepository;
