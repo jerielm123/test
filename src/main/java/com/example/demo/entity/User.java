@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.google.gson.annotations.SerializedName;
+
 @Entity
 @Table(name = "user")
 public final class User {
@@ -32,11 +34,13 @@ public final class User {
 	public void setUserSettings(UserSettings userSettings) {
 		this.userSettings = userSettings;
 	}*/
-
+	@SerializedName(value = "email")
 	private String userEmail;
 	
+	@SerializedName(value = "family_name")
 	private String lastName;
 	
+	@SerializedName(value = "given_name")
 	private String firstName;
 	
 	private Date createdDateTime;
