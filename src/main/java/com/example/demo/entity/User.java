@@ -1,17 +1,14 @@
 package com.example.demo.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.google.gson.annotations.SerializedName;
 
 @Entity
 @Table(name = "user")
@@ -32,11 +29,21 @@ public final class User {
 	public void setUserSettings(UserSettings userSettings) {
 		this.userSettings = userSettings;
 	}*/
-
+	@SerializedName(value = "email")
 	private String userEmail;
 	
+	@SerializedName(value = "family_name")
 	private String lastName;
 	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@SerializedName(value = "given_name")
 	private String firstName;
 	
 	private Date createdDateTime;
