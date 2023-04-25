@@ -13,9 +13,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/**").fullyAuthenticated().and().sessionManagement()
-				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().oauth2ResourceServer().jwt().and().and()
-				.cors().and().csrf().disable();
+		http.authorizeRequests()
+			.antMatchers("/**")
+			.fullyAuthenticated()
+			.and()
+			.sessionManagement()
+			.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+			.and()
+			.oauth2ResourceServer()
+			.jwt()
+			.and()
+			.and()
+			.cors()
+			.and()
+			.csrf()
+			.disable();
 	}
 
 	@Override
