@@ -1,5 +1,9 @@
 package com.example.demo.dto;
 
+import java.util.List;
+
+import com.example.demo.entity.Email;
+
 public class UpdateUserSettingsDto {
 	private Long id;
 	
@@ -8,6 +12,8 @@ public class UpdateUserSettingsDto {
 	private Integer shortBreak;
 	
 	private Integer longBreak;
+	
+	private List<Email> email;
 
 	public Long getId() {
 		return id;
@@ -39,5 +45,13 @@ public class UpdateUserSettingsDto {
 
 	public void setLongBreak(Integer longBreak) {
 		this.longBreak = longBreak;
+	}
+
+	public List<Email> getEmail() {
+		return email;
+	}
+
+	public void setEmail(List<Email> email) {
+		this.email = email;
 	}
 }

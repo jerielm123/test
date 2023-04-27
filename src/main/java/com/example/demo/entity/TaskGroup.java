@@ -36,19 +36,10 @@ public final class TaskGroup {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-
-	/*
-	@OneToMany
-    private List<Task> tasks = new ArrayList<>();
-    
-
-	public List<Task> getTasks() {
-		return tasks;
+	
+	public Long getId() {
+	    return id;
 	}
-
-	public void setTasks(List<Task> tasks) {
-		this.tasks = tasks;
-	}*/
 
 	public Date getCreatedDateTime() {
 		return createdDateTime;

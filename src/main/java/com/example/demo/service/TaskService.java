@@ -10,6 +10,8 @@ public interface TaskService
 {
 	List<Task> getTasks(Long userId);
 	
+	List<Task> getDoneTasks(Long userId);
+	
 	Task createTask(CreateTaskDto createTaskDto, Long userId);
 	
 	Task updateTask(UpdateTaskDto updateTaskDto, Long taskId, Long userId);

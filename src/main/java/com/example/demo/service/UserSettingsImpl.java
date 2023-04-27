@@ -32,6 +32,7 @@ public class UserSettingsImpl implements UserSettingsService
 		
 		currentUserSettings.setLongBreak(userSettings.getLongBreak());
 		currentUserSettings.setShortBreak(userSettings.getShortBreak());
+		currentUserSettings.setEmail(userSettings.getEmail());
 		
 		return userSettingsRepository.save(currentUserSettings);
 	}

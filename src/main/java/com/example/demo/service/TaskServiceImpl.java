@@ -40,6 +40,11 @@ public class TaskServiceImpl implements TaskService
 		return taskRepository.getCurrentTasks(userId);
 	}
 	
+	public List<Task> getDoneTasks(Long userId)
+	{
+		return taskRepository.getDoneTasks(userId);
+	}
+	
 	@Override
 	public Task createTask(CreateTaskDto createTaskDto, Long userId)
 	{
