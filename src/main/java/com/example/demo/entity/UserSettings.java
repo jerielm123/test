@@ -1,9 +1,12 @@
 package com.example.demo.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -25,6 +28,17 @@ public class UserSettings {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	@OneToMany
+	private List<Email> email;
+	
+	public List<Email> getEmail() {
+		return email;
+	}
+	
+	public void setEmail(List<Email> email) {
+		this.email = email;
+	}
 
 	private Integer shortBreak;
 
@@ -45,5 +59,4 @@ public class UserSettings {
 	public void setLongBreak(Integer longBreak) {
 		this.longBreak = longBreak;
 	}
-
 }

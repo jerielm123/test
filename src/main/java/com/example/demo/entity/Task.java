@@ -37,6 +37,10 @@ public final class Task {
 	
 	private Boolean isEmailSent;
 	
+	public Long getId() {
+	    return id;
+	}
+	
 	public User getUser() {
 		return user;
 	}
