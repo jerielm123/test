@@ -16,6 +16,7 @@ public class Email {
 	private String emailType;
 	
 	private String emailAddress;
+	private Long userSettings;
 
 	public String getEmailAddress() {
 		return emailAddress;
@@ -31,5 +32,13 @@ public class Email {
 
 	public void setEmailType(String emailType) {
 		this.emailType = emailType;
+	}
+
+	public Long getUserSettings() {
+		return userSettings;
+	}
+
+	public void setUserSettings(Long userSettings) {
+		this.userSettings = userSettings;
 	}
 }

@@ -8,4 +8,5 @@ public interface UserSettingsService
 	UserSettings getUserSettings(Long userId);
 	
 	UserSettings updateUserSettings(UpdateUserSettingsDto userSettingsDto, Long userSettingsId, Long userId);
+	
 }

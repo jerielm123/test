@@ -6,9 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "userSettings")
@@ -29,7 +29,7 @@ public class UserSettings {
 		this.user = user;
 	}
 	
-	@OneToMany
+	@Transient
 	private List<Email> email;
 	
 	public List<Email> getEmail() {
@@ -58,5 +58,13 @@ public class UserSettings {
 
 	public void setLongBreak(Integer longBreak) {
 		this.longBreak = longBreak;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 }

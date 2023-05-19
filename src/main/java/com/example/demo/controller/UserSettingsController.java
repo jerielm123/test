@@ -35,4 +35,6 @@ public class UserSettingsController
 		UserSettings currentUserSettings = userSettingsService.updateUserSettings(userSettingsDto, id, userSettingsDto.getUserId());
         return ResponseEntity.ok(currentUserSettings);
     }
+	
+
 }

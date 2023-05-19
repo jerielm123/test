@@ -7,5 +7,6 @@ import com.example.demo.entity.User;
 public interface UserService {
 	public User saveOrRetrieveUser(User user);
 	public List<User> getAllUser();
+	public User findById(Long id) ;
 
 }
