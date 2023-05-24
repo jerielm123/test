@@ -19,10 +19,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Email;
 import com.example.demo.entity.Task;
-import com.example.demo.entity.UserSettings;
+import com.example.demo.repository.EmailRepository;
 import com.example.demo.repository.TaskGroupRepository;
 import com.example.demo.repository.TaskRepository;
-import com.example.demo.repository.UserSettingsRepository;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.HttpTransport;
@@ -42,20 +41,22 @@ public class EmailServiceImpl implements EmailService
     private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
     
     private final TaskRepository taskRepository;
-    private final UserSettingsRepository userSettingsRepository;
     private final TaskGroupRepository taskGroupRepository;
-    
-    public EmailServiceImpl(TaskRepository taskRepository, UserSettingsRepository userSettingsRepository,
-    		TaskGroupRepository taskGroupRepository)
+    private final EmailRepository emailRepository;
+    private final TokenService tokenService;
+    public EmailServiceImpl(TaskRepository taskRepository, TokenService tokenService,
+    		TaskGroupRepository taskGroupRepository, EmailRepository emailRepository)
     {
     	this.taskRepository = taskRepository;
-    	this.userSettingsRepository = userSettingsRepository;
     	this.taskGroupRepository = taskGroupRepository;
+    	this.emailRepository = emailRepository;
+		this.tokenService = tokenService;
     }
  
     @Override
-    public void sendEosReport(String accessToken, Long userId) 
+    public void sendEosReport(String accessToken, Long userId) throws IOException, GeneralSecurityException 
     {
+    	accessToken = tokenService.getAccessTokenFromIdToken(accessToken);
     	GoogleCredentials credentials = GoogleCredentials.create(new AccessToken(accessToken, null));
         Gmail service;
         String body = getTasks(userId);
@@ -65,7 +66,7 @@ public class EmailServiceImpl implements EmailService
         String dateString = currentDate.format(formatter);
         String subject = "EOS Report - " + dateString;
         
-        List<Email> recipientList = getUserEmailSettings(userId);
+        List<Email> recipientList = emailRepository.findByUserSettings(userId);
         
         try 
         {
@@ -139,12 +140,7 @@ public class EmailServiceImpl implements EmailService
     	return message;
     }
     
-    private List<Email> getUserEmailSettings(Long userId)
-    {
-    	UserSettings userSettings = userSettingsRepository.getUserSettings(userId);
-    	List<Email> emailList = userSettings.getEmail();
-    	return emailList;
-    }
+    
     
     private void updateTasksStatus(Long userId)
     {

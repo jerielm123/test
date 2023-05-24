@@ -15,16 +15,14 @@ import client.example.demo.mapper.DtoMapper;
 public class UserSettingsImpl implements UserSettingsService
 {
 	private final UserSettingsRepository userSettingsRepository;
-	private final DtoMapper dtoMapper;
 	private final UserService userService;
 	private final EmailRepository emailRepository;	
 	
-	public UserSettingsImpl(UserSettingsRepository userSettingsRepository, DtoMapper dtoMapper,UserService userService,EmailRepository email)
+	public UserSettingsImpl(UserSettingsRepository userSettingsRepository,UserService userService,EmailRepository email)
 	{
 		this.emailRepository = email;
 		this.userService = userService;
 		this.userSettingsRepository = userSettingsRepository;
-		this.dtoMapper = dtoMapper;
 	}
 
 	@Override
