@@ -43,6 +43,16 @@ public class UserSettings {
 	private Integer shortBreak;
 
 	private Integer longBreak;
+	
+	private Integer pomodoroTime;
+
+	public Integer getPomodoroTime() {
+		return pomodoroTime;
+	}
+
+	public void setPomodoroTime(Integer pomodoroTime) {
+		this.pomodoroTime = pomodoroTime;
+	}
 
 	public Integer getShortBreak() {
 		return shortBreak;

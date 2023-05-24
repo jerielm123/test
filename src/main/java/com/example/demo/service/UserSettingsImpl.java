@@ -55,6 +55,7 @@ public class UserSettingsImpl implements UserSettingsService
 		currentUserSettings.setLongBreak(userSettingsDto.getLongBreak());
 		currentUserSettings.setShortBreak(userSettingsDto.getShortBreak());
 		currentUserSettings.setEmail(userSettingsDto.getEmail());
+		currentUserSettings.setPomodoroTime(userSettingsDto.getPomodoroTime());
 		
 		return userSettingsRepository.save(currentUserSettings);
 	}

@@ -13,6 +13,16 @@ public class UpdateUserSettingsDto {
 	
 	private Integer longBreak;
 	
+	private Integer pomodoroTime;
+	
+	public Integer getPomodoroTime() {
+		return pomodoroTime;
+	}
+
+	public void setPomodoroTime(Integer pomodoroTime) {
+		this.pomodoroTime = pomodoroTime;
+	}
+
 	private List<Email> email;
 
 	public Long getId() {
