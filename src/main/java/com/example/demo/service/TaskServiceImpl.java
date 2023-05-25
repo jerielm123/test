@@ -48,7 +48,7 @@ public class TaskServiceImpl implements TaskService
 	@Override
 	public Task createTask(CreateTaskDto createTaskDto, Long userId)
 	{
-		Task task = dtoMapper.toCreateTask(createTaskDto);
+		Task task = new Task();
 		
 		Optional<TaskGroup> taskGroupOptional = taskGroupRepository.findFirstByUserIdAndIsEndedOrderByCreatedAtDesc(userId);
 		TaskGroup taskGroup = new TaskGroup();
