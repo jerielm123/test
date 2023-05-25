@@ -69,8 +69,12 @@ public class TaskServiceImpl implements TaskService
         	task.setTaskGroup(taskGroupOptional.get());
         }
 
+        task.setDescription(createTaskDto.getDescription());
+        task.setIsDone(createTaskDto.getIsDone());
+        task.setIsEmailSent(createTaskDto.getIsEmailSent());
         task.setLastUpdateDateTime(new Date());
         task.setUser(userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User not found")));
+        
         task = taskRepository.save(task);
         
 		return task;
