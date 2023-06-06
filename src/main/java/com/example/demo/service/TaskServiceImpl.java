@@ -83,12 +83,11 @@ public class TaskServiceImpl implements TaskService
 	@Override
 	public Task updateTask(UpdateTaskDto updateTaskDto, Long taskId, Long userId)
 	{
-		Task task = dtoMapper.toUpdateTask(updateTaskDto);
 		Task currentTask = taskRepository.findById(taskId).orElseThrow(RuntimeException::new);
 		
-		currentTask.setDescription(task.getDescription());
-		currentTask.setIsDone(task.getIsDone());
-		currentTask.setIsEmailSent(task.getIsEmailSent());
+		currentTask.setDescription(updateTaskDto.getDescription());
+		currentTask.setIsDone(updateTaskDto.getIsDone());
+		currentTask.setIsEmailSent(updateTaskDto.getIsEmailSent());
 		currentTask.setLastUpdateDateTime(new Date());
 		currentTask.setUpdatedBy(userId);
 		currentTask.setCreatedBy(currentTask.getCreatedBy());

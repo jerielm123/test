@@ -17,7 +17,7 @@ public interface TaskRepository extends JpaRepository<Task, Long>
 	List<Task> getCurrentTasks(Long userId);
 	
 	@Query("SELECT t FROM Task t LEFT JOIN TaskGroup tg ON t.taskGroup.id = tg.id"
-			+ " WHERE t.user.id = ?1 AND tg.isEnded = false AND t.isDone = true AND t.isEmailSent = false"
+			+ " WHERE t.user.id = ?1  AND t.isDone = true AND t.isEmailSent = false"
 			+ " ORDER BY tg.lastUpdateDateTime DESC")
 	List<Task> getDoneTasks(Long userId);
 	

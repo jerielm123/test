@@ -14,6 +14,8 @@ public class UpdateTaskDto {
 	private Long updatedBy;
 	
 	private Boolean isEmailSent;
+	
+	private Boolean isEnded;
 
 	public Long getUserId() {
 		return userId;
@@ -21,6 +23,14 @@ public class UpdateTaskDto {
 
 	public void setUserId(Long userId) {
 		this.userId = userId;
+	}
+
+	public Boolean getIsEnded() {
+		return isEnded;
+	}
+
+	public void setIsEnded(Boolean isEnded) {
+		this.isEnded = isEnded;
 	}
 
 	public String getDescription() {

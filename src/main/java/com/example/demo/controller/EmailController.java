@@ -32,10 +32,9 @@ public class EmailController {
 	public ResponseEntity<String> sendEmail(@RequestHeader(required = false) Map<String, String> headers,
 			// @RequestParam("accessToken") String accessToken,
 			@RequestParam("userId") Long userId) throws IOException, GeneralSecurityException {
-		if (headers.get("authorization") != null) {
-			String authToken = headers.get("authorization").replace("Bearer", "").trim();
-			emailService.sendEosReport(authToken, userId);
-		}
+		
+			emailService.sendEosReport(userId);
+		
 		return new ResponseEntity<>("Email sent successfully", HttpStatus.OK);
 	}
 }
