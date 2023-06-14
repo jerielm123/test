@@ -141,14 +141,18 @@ public class EmailServiceImpl implements EmailService {
 
 	private String getTasks(Long userId) {
 		List<Task> doneTaskList = taskRepository.getCurrentTasks(userId);
-		String message = "What I did today:\n";
+		StringBuilder today = new  StringBuilder("What I did today:\n");
+		StringBuilder later = new StringBuilder("What will I do next");
 		for (Task task : doneTaskList) {
-			if(task.getIsDone()) {
-			   message = message + "\t-" + task.getDescription() + "\n";
+			
+			if(Boolean.TRUE.equals(task.getIsDone()) && null != task.getIsDone()) {
+				today.append("\t-" + task.getDescription() + "\n");
+			} else {
+				today.append("\t-" + task.getDescription() + "\n");
 			}
 		}
 
-		return message;
+		return today.toString() + "\n" + later.toString();
 	}
 
 	private void updateTasksStatus(Long userId) {
